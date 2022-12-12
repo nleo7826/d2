@@ -106,7 +106,10 @@ public class BankAccount {
         if (accStatus == false) {
             throw new IllegalStateException("Account is already closed!");
         }
-        else if (amount < 0 || accBalance < amount) {
+        else if (amount < 0) {
+                throw new IllegalArgumentException("Invalid withdrawal amount!");
+        }
+        else if (accBalance < amount) {
             throw new IllegalArgumentException("Insufficient account balance to withdraw");
         } else {
             final DateTimeFormatter dateTime = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
